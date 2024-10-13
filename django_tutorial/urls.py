@@ -18,10 +18,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from main.views import StudyListView, StudyDetailView
+from main.views import StudyListView, StudyDetailView, LoginView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("login/", LoginView.as_view()),
     path("study/", StudyListView.as_view()),
     path("study/<int:pk>/", StudyDetailView.as_view()),
 ]
