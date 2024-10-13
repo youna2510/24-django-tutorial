@@ -45,9 +45,18 @@ class StudyListView(generics.ListCreateAPIView):
     queryset = Study.objects.all()
     serializer_class = StudySerializer
 
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
+
 
 class StudyDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
 
     queryset = Study.objects.all()
     serializer_class = StudySerializer
+
+    def get_queryset(self):
+        if self.request.method == "GET":
+            return super().get_queryset()
+
+        return super().get_queryset().filter(created_by=self.request.user)

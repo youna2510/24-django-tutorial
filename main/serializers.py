@@ -22,6 +22,10 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class StudySerializer(serializers.ModelSerializer):
+    created_by = serializers.PrimaryKeyRelatedField(
+        read_only=True,
+    )
+
     class Meta:
         model = Study
-        fields = ["id", "name", "description"]
+        fields = ["id", "name", "description", "created_by"]
