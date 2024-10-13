@@ -1,6 +1,7 @@
 # Create your views here.
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.generics import GenericAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from main.models import Study
@@ -39,10 +40,14 @@ class SignupView(generics.CreateAPIView):
 
 
 class StudyListView(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
+
     queryset = Study.objects.all()
     serializer_class = StudySerializer
 
 
 class StudyDetailView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthenticated]
+
     queryset = Study.objects.all()
     serializer_class = StudySerializer
