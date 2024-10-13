@@ -5,7 +5,7 @@ from rest_framework.response import Response
 
 from main.models import Study
 from django.contrib.auth import login, authenticate
-from main.serializers import StudySerializer, LoginSerializer
+from main.serializers import StudySerializer, LoginSerializer, UserSerializer
 from rest_framework import generics
 
 
@@ -30,6 +30,12 @@ class LoginView(GenericAPIView):
         login(request, user)
 
         return Response()
+
+
+class SignupView(generics.CreateAPIView):
+    authentication_classes = []
+    permission_classes = []
+    serializer_class = UserSerializer
 
 
 class StudyListView(generics.ListCreateAPIView):
