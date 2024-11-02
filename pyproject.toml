@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "django-tutorial"
+version = "0.1.0"
+description = ""
+authors = ["tonynamy <me@tonynamy.dev>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "5.1"
+djangorestframework = "^3.15.2"
+django-filter = "^24.3"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+ruff = "^0.7.2"
+pre-commit = "^4.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
