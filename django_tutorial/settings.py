@@ -136,4 +136,4 @@ REST_FRAMEWORK = {
     ],
 }
 
-AUTH_USER_MODEL = "main.User"
+AUTH_USER_MODEL = "main.User"  # noqa: F811
