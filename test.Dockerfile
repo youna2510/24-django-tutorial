@@ -11,3 +11,4 @@ RUN pip install poetry
 RUN poetry config virtualenvs.create false && poetry install --no-root
 
 RUN python manage.py check --deploy || exit 1
+RUN python manage.py migrate --no-input || exit 1

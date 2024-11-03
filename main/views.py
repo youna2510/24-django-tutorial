@@ -1,12 +1,21 @@
 # Create your views here.
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.generics import GenericAPIView
+from rest_framework.mixins import (
+    ListModelMixin,
+    DestroyModelMixin,
+    CreateModelMixin,
+)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from main.models import Study
 from django.contrib.auth import login, authenticate
-from main.serializers import StudySerializer, LoginSerializer, UserSerializer
+from main.serializers import (
+    StudySerializer,
+    LoginSerializer,
+    UserSerializer,
+)
 from rest_framework import generics
 
 
@@ -60,3 +69,29 @@ class StudyDetailView(generics.RetrieveUpdateDestroyAPIView):
             return super().get_queryset()
 
         return super().get_queryset().filter(created_by=self.request.user)
+
+
+class StudyParticipationListView(
+    ListModelMixin,
+    CreateModelMixin,
+    GenericAPIView,
+):
+    """
+    GET: 내 스터디 참여 목록. 남의 것이 조회되면 안됩니다.
+    POST: 내 스터디 참여 목록 추가. 남의 것을 추가할 수 없습니다(HTTP 403 에러)
+    """
+
+    ### assignment3: 이곳에 과제를 작성해주세요
+    ### end assignment3
+
+
+class StudyParticipationView(
+    DestroyModelMixin,
+    GenericAPIView,
+):
+    """
+    DELETE: 내 스터디 참여 목록 제거. 남의 것을 제거할 수 없습니다(HTTP 404 에러)
+    """
+
+    ### assignment3: 이곳에 과제를 작성해주세요
+    ### end assignment3

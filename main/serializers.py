@@ -21,11 +21,21 @@ class UserSerializer(serializers.ModelSerializer):
         return super().save(password=hashed_password, **kwargs)
 
 
+class StudyParticipationSerializer(serializers.ModelSerializer):
+    """
+    StudyParticipation에 해당하는 Serializer
+    """
+
+    ### assignment3: 이곳에 과제를 작성해주세요
+    ### end assignment3
+
+
 class StudySerializer(serializers.ModelSerializer):
     created_by = serializers.PrimaryKeyRelatedField(
         read_only=True,
     )
+    studyparticipation_set = StudyParticipationSerializer(many=True, read_only=True)
 
     class Meta:
         model = Study
-        fields = ["id", "name", "description", "created_by"]
+        fields = ["id", "name", "description", "created_by", "studyparticipation_set"]

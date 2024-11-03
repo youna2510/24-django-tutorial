@@ -1,5 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models import UniqueConstraint
+
 
 # Create your models here.
 
@@ -20,3 +22,15 @@ class Study(models.Model):
     class Meta:
         db_table = "study"
         verbose_name = "스터디"
+
+
+class StudyParticipation(models.Model):
+    study = models.ForeignKey(to=Study, on_delete=models.PROTECT)
+    user = models.ForeignKey(to=User, on_delete=models.PROTECT)
+
+    class Meta:
+        db_table = "study_participation"
+        verbose_name = "스터디 참가 이력"
+        constraints = [
+            UniqueConstraint(fields=["study", "user"], name="study_participation")
+        ]

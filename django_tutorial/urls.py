@@ -18,7 +18,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from main.views import StudyListView, StudyDetailView, LoginView, SignupView
+from main.views import (
+    StudyListView,
+    StudyDetailView,
+    LoginView,
+    SignupView,
+    StudyParticipationListView,
+    StudyParticipationView,
+)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -26,4 +33,6 @@ urlpatterns = [
     path("signup/", SignupView.as_view()),
     path("study/", StudyListView.as_view()),
     path("study/<int:pk>/", StudyDetailView.as_view()),
+    path("study-participation/", StudyParticipationListView.as_view()),
+    path("study-participation/<int:pk>/", StudyParticipationView.as_view()),
 ]
