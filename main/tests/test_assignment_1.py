@@ -14,8 +14,8 @@ def test_calc_더하기(client):
     res = client.post(
         "/calc",
         data={
-            "input_a": 1,
-            "input_b": 2,
+            "input_a": "1",
+            "input_b": "2",
             "operator": "+",
         },
     )
@@ -29,8 +29,8 @@ def test_calc_빼기(client):
     res = client.post(
         "/calc",
         data={
-            "input_a": 1,
-            "input_b": 2,
+            "input_a": "1",
+            "input_b": "2",
             "operator": "-",
         },
     )
@@ -44,8 +44,8 @@ def test_calc_나누기(client):
     res = client.post(
         "/calc",
         data={
-            "input_a": 18,
-            "input_b": 3,
+            "input_a": "18",
+            "input_b": "3",
             "operator": "/",
         },
     )
@@ -59,8 +59,8 @@ def test_calc_곱하기(client):
     res = client.post(
         "/calc",
         data={
-            "input_a": 5,
-            "input_b": 4,
+            "input_a": "5",
+            "input_b": "4",
             "operator": "*",
         },
     )
