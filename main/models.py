@@ -20,3 +20,9 @@ class Study(models.Model):
     class Meta:
         db_table = "study"
         verbose_name = "스터디"
+
+
+class Student(models.Model):
+    name = models.CharField(max_length=128, verbose_name="학생 이름")
+    student_number = models.CharField(max_length=128, verbose_name="학번")
+    primary_major = models.CharField(max_length=128, verbose_name="제 1전공")
